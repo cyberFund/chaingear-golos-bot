@@ -1,0 +1,15 @@
+{
+  "name": "chaingear-golos-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "github-api-node": "^0.11.2",
+    "golos-js": "^0.5.28"
+  }
+}
