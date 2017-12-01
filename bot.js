@@ -78,14 +78,14 @@ const main = () => {
 						//console.log(res)
 					    return golos.broadcast.comment(config.wif1, 
 					    		posts[0].author, 
-								posts[0].permlink, 
-								'ninjas', 
-								`re-cyberanalytics-${posts[0].permlink}-${Math.floor(Math.random() * (1000000 - 1) + 1)}`, 
-								'', 
-								'Thank you for submitting your application for listing on cyber•Fund ICO Radar.', 
-								'', 
-								(err, result) => err?console.log(err):result
-								)
+							posts[0].permlink, 
+							'cyberanalytics', 
+							`re-cyberanalytics-${posts[0].permlink}-${Math.floor(Math.random() * (1000000 - 1) + 1)}`, 
+							'', 
+							'Thank you for submitting your application for listing on cyber•Fund ICO Radar.', 
+							'', 
+							(err, result) => err?console.log(err):result
+							)
 					})
 					.then(none => {
 						return readFile(dataRepo)
