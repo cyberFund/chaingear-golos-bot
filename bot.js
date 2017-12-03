@@ -32,11 +32,11 @@ const createBranch = (repository, link) => {
 }
 const writeOrUpdate = (repository, branch, link, file, text) => {
 	return new Promise((resolve, reject)=> {
-		repository.write(branch, 
-			file, 
-			text, 
-			`Commit from golosBot. Add: ${link}`, 
-			options, 
+		repository.write(branch,
+			file,
+			text,
+			`Commit from golosBot. Add: ${link}`,
+			options,
 			err => err?reject(err):resolve(`File ${link}.toml created`))
 	})
 }
@@ -54,7 +54,7 @@ const createPullRequest = (base, pullReq) => {
 const main = () => {
 	golos.api.getDiscussionsByCreated({"select_tags":['ico-data'], "limit":10}, (err, res)=>err?console.log(err):res)
 		.then(posts=>{
-			
+
 			const meta = JSON.parse(posts[0].json_metadata)
 			if(posts[0].id!==lastPost.id && meta.format==='markdown') {
 				const link = posts[0].title.replace(/[\W]/g, '')
@@ -76,14 +76,14 @@ const main = () => {
 					})
 					.then(res => {
 						//console.log(res)
-					    return golos.broadcast.comment(config.wif1, 
-					    		posts[0].author, 
-							posts[0].permlink, 
-							'cyberanalytics', 
-							`re-cyberanalytics-${posts[0].permlink}-${Math.floor(Math.random() * (1000000 - 1) + 1)}`, 
-							'', 
-							'Thank you for submitting your application for listing on cyber•Fund ICO Radar.', 
-							'', 
+					    return golos.broadcast.comment(config.wif,
+					    posts[0].author,
+							posts[0].permlink,
+							config.account, 
+							`re-cyberanalytics-${posts[0].permlink}-${Math.floor(Math.random() * (1000000 - 1) + 1)}`,
+							'',
+							'Thank you for submitting your application for listing on cyber•Fund ICO Radar.',
+							'',
 							(err, result) => err?console.log(err):result
 							)
 					})

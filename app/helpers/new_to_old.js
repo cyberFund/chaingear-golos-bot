@@ -5,12 +5,12 @@ module.exports = (new_file) => {
     dependencies: [],
     icon: new_file.description.logo,
     token: {
-      name: new_file.ico.common_info.token[0].name,
-      symbol: new_file.ico.common_info.token[0].symbol
+      name: new_file.ico.common_info.token.name,
+      symbol: new_file.ico.common_info.token.symbol
     },
     consensus: {
-      consensus_type: new_file.ico.common_info.token[0].consensus_name.match(/\b(\w)/g).join('').toUpperCase(),
-      consensus_name: new_file.ico.common_info.token[0].consensus_name
+      consensus_type: new_file.ico.common_info.token.dependency,
+      consensus_name: new_file.ico.common_info.token.dependency
     },
     descriptions: {
       state: 'Project',
@@ -32,7 +32,9 @@ module.exports = (new_file) => {
     },
     links: new_file.links
   }
-  old_json.dependencies.push(new_file.ico.common_info.token[0].dependency)
-  old_json.crowdsales.cap_limit.push(new_file.ico.phases[0].terms.cap_limit)
+  old_json.dependencies.push(new_file.ico.common_info.token.dependency)
+  if(new_file.ico.phases[0].terms.cap_limit.amount>0) {
+    old_json.crowdsales.cap_limit.push(`${new_file.ico.phases[0].terms.cap_limit.currency}=${new_file.ico.phases[0].terms.cap_limit.amount}`)
+  }
   return old_json
 }

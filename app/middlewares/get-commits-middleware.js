@@ -1,7 +1,9 @@
 const prms = require('../helpers/promisified.js')
 const upvoter = require('../helpers/upvoter.js')
-const owner = 'ninjascant',
-  repo = 'golos-academy'
+const config = require('../../config.json')
+
+const owner = config.owner //'ninjascant',
+  repo = config.repo
 
 module.exports = (req, res, next) => {
   const event = req.headers['x-github-event']
@@ -29,7 +31,7 @@ module.exports = (req, res, next) => {
     // Get commits from commit
     const commits = req.body.commits.filter(commit => commit.added.length!==0 || commit.modified.length !== 0)
     if(commits.length === 0) return
-    if(commits[0].modified.indexOf('chaingear.json')!==-1) {
+    if(commits[0].modified.indexOf('chaingear.json')!==-1 ||commits[0].added.indexOf('chaingear.json')!==-1) {
       console.log('That was chaingear.json')
       return
     }
@@ -37,7 +39,8 @@ module.exports = (req, res, next) => {
     const promiseList = commits.map(commit => prms.apiReq((url + commit.id)))
     Promise.all(promiseList)
       .then(commits => {
-        upvoter(commits)
+        //commits = JSON.parse(commits)
+        //console.log(commits);
         req.commits = commits
         next()
       })
