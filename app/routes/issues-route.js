@@ -1,6 +1,6 @@
 const config = require('../../config.json');
 const githubMiddleware = require('github-webhook-middleware')({
-  secret: config.git_secret
+  secret: config.issues_webhook_secret
 })
 
 module.exports = (app) => {
