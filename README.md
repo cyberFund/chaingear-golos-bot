@@ -18,4 +18,5 @@
     *  `secret` - должен совпадать с `commit_webhook_secret` в `config.json`, 
     * `event` - `push`
 4. Запустить бота: `node bot.js`
-5. Запустить express приложение: `npm run start`
+5. Прописать порт в файле server.js
+6. Запустить express приложение: `npm run start`
