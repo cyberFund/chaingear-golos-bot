@@ -11,9 +11,11 @@
   * `commit_webhook_secret`: пароль для webhook с push event
   * `owner`: cyberFund
   * `repo`: chaingear
-3. Настроить webhooks в репозитории chaingear:
+3. Настроить [webhooks](https://github.com/cyberFund/chaingear/settings/hooks) в репозитории chaingear:
   * Commit webhook: 
     * Payload URL - `http://<домен>/commit`, 
     * Content type - `application/json`, 
     *  `secret` - должен совпадать с `commit_webhook_secret` в `config.json`, 
     * `event` - `push`
+4. Запустить бота: `node bot.js`
+5. Запустить express приложение: `npm run start`
