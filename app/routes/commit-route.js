@@ -20,12 +20,21 @@ const url = 'https://api.github.com/repos/cyberFund/chaingear/commits/'
 module.exports = (app, db) => {
   app.post('/commit', githubMiddleware, getCommits, getBlobs, (req, res) => {
     let currentCgSha = ''
+
     if(req.blobs[0] === undefined) return
     blobs = req.blobs.map(blob => {
       if(blob.content.ico!==undefined) {
         console.log('New file');
         blob.content = convert(blob.content)
       }
+      const datesObj = {
+        startDate = blob.content.crowdsales.start_date,
+        endDate = blob.content.crowdsales.end_date
+        project = blob.content.system 
+      }
+      db.collection('datesCollection').save(datesObj, (err, res) => {
+        console.log(err?err:res)
+      })
       return blob.content
     })
     prms.getFileBlob(owner, repo, br, 'chaingear.json')
@@ -38,16 +47,6 @@ module.exports = (app, db) => {
           chaingear.splice(m, 1, blobs[i])
         }
         chaingear = _.sortBy(chaingear, ['system'])
-        /*
-        chaingear = chaingear.filter(proj => {
-          return updated.indexOf(proj.system)===-1
-        })
-        const n = chaingear.length
-        const fiat = chaingear.slice(n-15)
-        let crypto = chaingear.slice(0, n-15)
-        crypto = crypto.push(blobs[0])
-        crypto = _.sortBy(crypto, ['system'])
-        return crypto.concat(fiat)*/
         return chaingear
       })
       .then(newFile => {

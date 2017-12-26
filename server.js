@@ -2,13 +2,24 @@
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
 const bodyParser = require('body-parser')
+const schedule = require('node-schedule')
+const db = require('./config/db')
 
 const app = express()
 app.use(bodyParser.json())
-const port = 8080
+app.use(express.static('dist'))
+const port = 8000
 
-require('./app/routes/index.js')(app, {})
+MongoClient.connect(db.url, (err, database) => {
+	if(err) return console.log(err)
 
-app.listen(port, () => {
-  console.log('listen 8080')
+	const everyDayJob = schedule.scheduleJob('05 * * * * *', () => {
+		console.log('Another work day is here')
+	})
+
+	require('./app/routes/index.js')(app, database)
+	app.listen(port, () => {
+	  console.log('listen 8080')
+	})
 })
+
