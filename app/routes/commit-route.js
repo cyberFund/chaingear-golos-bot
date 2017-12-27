@@ -28,9 +28,9 @@ module.exports = (app, db) => {
         blob.content = convert(blob.content)
       }
       const datesObj = {
-        startDate = blob.content.crowdsales.start_date,
-        endDate = blob.content.crowdsales.end_date
-        project = blob.content.system 
+        startDate: blob.content.crowdsales.start_date,
+        endDate: blob.content.crowdsales.end_date,
+        project: blob.content.system 
       }
       db.collection('datesCollection').save(datesObj, (err, res) => {
         console.log(err?err:res)
