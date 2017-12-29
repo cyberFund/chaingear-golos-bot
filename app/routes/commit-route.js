@@ -3,6 +3,7 @@ const prms = require('../helpers/promisified.js')
 const convert = require('../helpers/new_to_old.js')
 const getCommits = require('../middlewares/get-commits-middleware.js')
 const getBlobs = require('../middlewares/blobs-middleware.js')
+const sendToDb = require('../middlewares/db-middleware.js')
 const _ = require('lodash')
 const Base64 = require('js-base64').Base64
 const jsonfile = require('jsonfile')
@@ -18,7 +19,7 @@ const blobGetUrl = 'https://api.github.com/repos/cyberFund/chaingear/git/blobs/'
 const url = 'https://api.github.com/repos/cyberFund/chaingear/commits/'
 
 module.exports = (app, db) => {
-  app.post('/commit', githubMiddleware, getCommits, getBlobs, (req, res) => {
+  app.post('/commit', githubMiddleware, getCommits, getBlobs, sendToDb, (req, res) => {
     let currentCgSha = ''
 
     if(req.blobs[0] === undefined) return
@@ -27,14 +28,6 @@ module.exports = (app, db) => {
         console.log('New file');
         blob.content = convert(blob.content)
       }
-      const datesObj = {
-        startDate: blob.content.crowdsales.start_date,
-        endDate: blob.content.crowdsales.end_date,
-        project: blob.content.system 
-      }
-      db.collection('datesCollection').save(datesObj, (err, res) => {
-        console.log(err?err:res)
-      })
       return blob.content
     })
     prms.getFileBlob(owner, repo, br, 'chaingear.json')
@@ -55,6 +48,7 @@ module.exports = (app, db) => {
       })
       .then(none => {
         currentCgSha = ''
+        res.send('Success')
         console.log(none)
       })
       .catch(error=>console.log(error))
