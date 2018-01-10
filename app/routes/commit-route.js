@@ -23,16 +23,18 @@ module.exports = (app, db) => {
     let currentCgSha = ''
 
     if(req.blobs[0] === undefined) return
+    
     blobs = req.blobs.map(blob => {
       if(blob.content.ico!==undefined) {
-        console.log('New file');
         blob.content = convert(blob.content)
       }
       return blob.content
     })
+    
     prms.getFileBlob(owner, repo, br, 'chaingear.json')
       .then(fileBlob => {
         currentCgSha = fileBlob.sha
+
         const updated = blobs.map(file => file.system)
         let chaingear = JSON.parse(Base64.decode(fileBlob.content))
         for (let i = 0; i < blobs.length; i++) {
@@ -40,6 +42,8 @@ module.exports = (app, db) => {
           chaingear.splice(m, 1, blobs[i])
         }
         chaingear = _.sortBy(chaingear, ['system'])
+        chaingear = chaingear.filter(project => project.system!=='')
+        chaingear = _.uniqBy(chaingear, 'system')
         return chaingear
       })
       .then(newFile => {
