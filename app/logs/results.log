@@ -42,3 +42,5 @@
 {"level":"debug","message":"Debug info","timestamp":"2018-01-12T11:56:10.822Z"}
 {"level":"info","message":"Hello world","timestamp":"2018-01-12T12:00:42.968Z"}
 {"level":"debug","message":"Debug info","timestamp":"2018-01-12T12:00:42.972Z"}
+{"level":"info","message":"Hello world","timestamp":"2018-01-12T13:46:35.065Z"}
+{"level":"debug","message":"Debug info","timestamp":"2018-01-12T13:46:35.070Z"}
