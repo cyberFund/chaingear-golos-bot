@@ -10,7 +10,7 @@ const github = new Github({
 	auth: "basic"
 })
 
-const baseRepo = github.getRepo('cyberfund', 'chaingear')
+const baseRepo = github.getRepo('cyberFund', 'chaingear')
 const repo = github.getRepo('goloschaingear', 'chaingear')
 const dataRepo = github.getRepo('goloschaingear', 'data')
 

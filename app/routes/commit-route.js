@@ -24,13 +24,13 @@ module.exports = (app, db) => {
 
     if(req.blobs[0] === undefined) return
     
-    blobs = req.blobs.map(blob => {
+    const blobs = req.blobs.map(blob => {
       if(blob.content.ico!==undefined) {
         blob.content = convert(blob.content)
       }
       return blob.content
     })
-    
+    console.log(blobs)
     prms.getFileBlob(owner, repo, br, 'chaingear.json')
       .then(fileBlob => {
         currentCgSha = fileBlob.sha

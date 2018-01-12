@@ -3,6 +3,7 @@ const Base64 = require('js-base64').Base64
 const prms = require('../helpers/promisified.js')
 const config = require('../../config.json')
 const upvoter = require('../helpers/upvoter.js')
+const _ = require('lodash')
 const owner = config.owner //'ninjascant',
   repo = config.repo
 let options = {
@@ -17,14 +18,22 @@ const issueUrl = `https://api.github.com/repos/${owner}/${repo}/issues`
 
 module.exports = (req, res, next) => {
   const blobGetUrl = `https://api.github.com/repos/${owner}/${repo}/git/blobs/`
-  const promiseList = req.commits.map(commit => {
-    commit = JSON.parse(commit)
-    upvoter(commit)
-    return commit.files.map(file=>{
-      if(file.filename.search(/toml/)===-1) return null
-      else return prms.apiReq(blobGetUrl+file.sha)
-    }).filter(prom => prom !== null)
-  }).reduce((prev, curr) => prev.concat(curr))
+  // There's some weird functional-style construction, intendent to extract last modified version of file 
+  const groupedByFile = req.commits.map(commit => commit.files).map(fileArr => fileArr[0]).reduce((grouped, item) => {
+    grouped[item.filename] = grouped[item.filename] || [] 
+    grouped[item.filename].push(item)
+    return grouped
+  }, {})
+  const lastChanges = Object.keys(groupedByFile).reduce((acc, key) => {
+    acc.push(groupedByFile[key])
+    return acc
+  }, []).map(fileChangesArr => fileChangesArr[fileChangesArr.length-1])
+
+  // Download blobs from Github
+  const promiseList = lastChanges.map(lastVersion => {
+    if(lastVersion.filename.search(/toml/)===-1) return null
+    else return prms.apiReq(blobGetUrl+lastVersion.sha)
+  }).filter(promis => promis !== null)
   Promise.all(promiseList)
     .then(blobs => {
       blobs = blobs.map(blob => {
