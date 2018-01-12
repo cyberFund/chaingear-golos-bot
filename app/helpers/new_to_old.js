@@ -1,9 +1,9 @@
 module.exports = (new_file) => {
   let old_json = {
     genesis_id: '',
-    system: new_file.description.project_name,
+    system: new_file.blockchain.project_name,
     dependencies: [],
-    icon: new_file.description.logo,
+    icon: new_file.blockchain.logo,
     token: {
       name: new_file.ico.common_info.token.name,
       symbol: new_file.ico.common_info.token.symbol
@@ -15,7 +15,7 @@ module.exports = (new_file) => {
     descriptions: {
       state: 'Project',
       system_type: 'cryptoasset',
-      headline: new_file.description.headline
+      headline: new_file.blockchain.headline
     },
     crowdsales: {
       start_date: new_file.ico.phases[0].dates.start_date,
