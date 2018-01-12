@@ -30,7 +30,7 @@ module.exports = (app, db) => {
       }
       return blob.content
     })
-    console.log(blobs)
+
     prms.getFileBlob(owner, repo, br, 'chaingear.json')
       .then(fileBlob => {
         currentCgSha = fileBlob.sha
