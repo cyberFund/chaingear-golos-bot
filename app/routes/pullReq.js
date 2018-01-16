@@ -10,7 +10,7 @@ const github = new Github({
 	auth: "basic"
 })
 
-const baseRepo = github.getRepo('cyberFund', 'chaingear')
+const baseRepo = github.getRepo('ninjascant', 'chaingear')
 const repo = github.getRepo('goloschaingear', 'chaingear')
 const dataRepo = github.getRepo('goloschaingear', 'data')
 
@@ -57,7 +57,7 @@ const createPullRequest = (base, pullReq) => {
 module.exports = (app) => {
 	app.post('/pullreq', (req, res) => {
 		delete req.body['_id']
-		const name = req.body.description.project_name.replace(/[\W]/g, '')
+		const name = req.body.blockchain.project_name.replace(/[\W]/g, '')
 		getBranches(repo)
 			.then(branches => branches.indexOf(name)===-1?createBranch(repo, name):name)
 			.then(none => {
@@ -69,7 +69,7 @@ module.exports = (app) => {
 			})
 			.then(none => {
 				const pull = {
-					title: `Update: ${name}`,
+					title: `Add: ${name}`,
 					body: 'Pull request from chaingear-frontend: update project info',
 					base: 'gh-pages',
 					head: `goloschaingear:${name}`
@@ -77,7 +77,7 @@ module.exports = (app) => {
 				return createPullRequest(baseRepo, pull)
 			})
 			.then(none=>{
-				res.send('Successful')
+				res.send(none)
 			})
 			.catch(err=>console.log(err))
 	})
