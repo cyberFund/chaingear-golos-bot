@@ -10,10 +10,10 @@ module.exports = (db) => {
         return new Date(project.ico.phases[0].dates.end_date).valueOf() < new Date().valueOf()
       })
       finished.forEach(project => {
-        db1.collection('activeProjects').deleteOne({'description.project_name': project.description.project_name})
+        db1.collection('activeProjects').deleteOne({'blockchain.project_name': project.blockchain.project_name})
         db1.collection('finishedInWork').save(project, (err, res) => {
           if(err) return console.log('Err while adding project', err)
-          console.log(`${project.description.project_name} project added to finishedInWork`)
+          console.log(`${project.blockchain.project_name} project added to finishedInWork`)
         })
       })
     })
