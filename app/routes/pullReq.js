@@ -10,7 +10,7 @@ const github = new Github({
 	auth: "basic"
 })
 
-const baseRepo = github.getRepo('ninjascant', 'chaingear')
+const baseRepo = github.getRepo(config.owner, config.repo)
 const repo = github.getRepo('goloschaingear', 'chaingear')
 const dataRepo = github.getRepo('goloschaingear', 'data')
 
