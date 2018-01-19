@@ -3,7 +3,7 @@ const D3Node = require('d3-node')
 const d3n = new D3Node({ canvasModule })
 const d3 = d3n.d3 
 const fs = require('fs')
-
+  
 module.exports = (dataset, filename, palleteNum) => {
   const palletes = [
     ['#E3B1AA', '#C3D8C1', '#89C284', '#F0B95D', '#95AB99'],
@@ -53,7 +53,7 @@ module.exports = (dataset, filename, palleteNum) => {
     context.fillStyle = palletes[palleteNum][i]
     context.fillRect(150, y, 15, 15)
     context.fillStyle = '#000'
-    context.fillText(d.name, 180, y+12)
+    context.fillText(d.description, 180, y+12)
   })
   canvas.pngStream().pipe(fs.createWriteStream(filename))
 }
