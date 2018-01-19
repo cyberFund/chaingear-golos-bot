@@ -3,14 +3,7 @@ const D3Node = require('d3-node')
 const d3n = new D3Node({ canvasModule })
 const d3 = d3n.d3 
 const fs = require('fs')
-  
-var dataset = [
-  { name: 'IE', percent: 39.10 },
-  { name: 'Chrome', percent: 32.51 },
-  { name: 'Safari', percent: 13.68 },
-  { name: 'Firefox', percent: 8.71 },
-  { name: 'Others', percent: 6.01 }
-]
+
 module.exports = (dataset, filename, palleteNum) => {
   const palletes = [
     ['#E3B1AA', '#C3D8C1', '#89C284', '#F0B95D', '#95AB99'],
