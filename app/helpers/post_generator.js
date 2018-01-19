@@ -180,8 +180,8 @@ const createPost = (form) => {
   const linksStr = `\n## Полезные ссылки\n${linksList}`
   // Full post string
   const fullPost = `${descrStr}${tokenStr}${icoStr}${linksStr}`
-  // return fullPost
-  fs.writeFileSync('./test.md', fullPost)
+  return fullPost
+  //fs.writeFileSync('./test.md', fullPost)
 }
-//module.exports = createPost
-createPost(form)
+module.exports = createPost
+// createPost(form)

@@ -1,6 +1,7 @@
 const config = require('../../config.json')
 const prms = require('../helpers/promisified.js')
 const Github = require('github-api-node')
+const postGen = require('../helpers/post_generator.js')
 
 const owner = 'ninjascant', // 'ninjascant'
   path = '/posts/',
@@ -30,8 +31,8 @@ const writeOrUpdate = (repository, branch, link, file, text) => {
 let i = 0
 module.exports = (app, db) => {
   app.post('/createPost', (req, res) => {
-    console.log(req.body)
-    writeOrUpdate(repo, br, `post${i}`, `posts/post${i}.md`, req.body.post)
+    const post = postGen(req.body.form)
+    writeOrUpdate(repo, br, `post${i}`, `posts/post${i}.md`, post)
       .then(result=>console.log(result))
       .catch(error=>console.log(error))
   })
