@@ -162,14 +162,14 @@ const createPost = (form) => {
 
   ### Распределение токенов
 
-  ![](http://ninja-analytics.ru/files/${form.blockchain.project_name}/token_distr.png)
+  ![](http://ninja-analytics.ru/static/${form.blockchain.project_name}/token_distr.png)
 
   Описание | Процент
   --|--${tokenDistrStr}
 
   ### Как будут использованы собранные средства:
 
-  ![](http://ninja-analytics.ru/files/${form.blockchain.project_name}/funds_distr.png)
+  ![](http://ninja-analytics.ru/static/${form.blockchain.project_name}/funds_distr.png)
 
   Описание | Процент
   --|--${fundsDistrStr}
