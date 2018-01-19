@@ -10,7 +10,7 @@ const app = express()
 app.use(expressMongoDb(db.url))
 app.use(bodyParser.json())
 app.use(express.static('dist'))
-app.use(express.static('files'))
+app.use('/static', express.static('files'))
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
