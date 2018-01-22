@@ -1,0 +1,380 @@
+{
+  "blockchain": {
+    "project_name": "ADAMANT3",
+    "headline": "A top-notch anonymous messenger encrypted with Blockchain",
+    "logo": "adamant",
+    "state": 0,
+    "asset_type": "blockchain app",
+    "dependency": "independent",
+    "consensus_name": "Delegated Proof-of-Stake"
+  },
+  "ico": {
+    "common_info": {
+      "is_ico": true,
+      "current_ico_phase": 0,
+      "current_phase_status": "Active",
+      "token_distribution": {
+        "total_supply": 200000000,
+        "shares": [
+          {
+            "description": "ICO",
+            "percent": 75
+          },
+          {
+            "description": "Initial investors rewards",
+            "percent": 9
+          },
+          {
+            "description": "Bounty Campaigns and initial user assessments",
+            "percent": 8
+          },
+          {
+            "description": "ADAMANT Business Service marketing reserve",
+            "percent": 4
+          },
+          {
+            "description": "reserve for system development and infrastructure support",
+            "percent": 4
+          }
+        ]
+      },
+      "use_of_proceeds": [
+        {
+          "description": "Infrastructure support",
+          "percent": 10
+        },
+        {
+          "description": "Development",
+          "percent": 30
+        },
+        {
+          "description": "External security and code auditions (reviews) —",
+          "percent": 10
+        },
+        {
+          "description": "Users involvement (promotion, advertising)",
+          "percent": 50
+        }
+      ]
+    },
+    "phases": [
+      {
+        "phase_num": 0,
+        "phase_name": "Pre-sale",
+        "phase_status": "Active",
+        "registration": {
+          "start_date": "",
+          "end_date": "",
+          "website": "",
+          "terms": ""
+        },
+        "terms": {
+          "sales_agreement": "https://adamant.im/ico/",
+          "sales_url": "https://adamant.im/ico/",
+          "issued_tokens": 0,
+          "sold_tokens": 0,
+          "share_of_sold": 0,
+          "token_distribution_date": "",
+          "cap_limit": [
+            {
+              "currency": "",
+              "amount": 0
+            }
+          ],
+          "vesting": [
+            {
+              "supply_percent": 0,
+              "lockup_condition": "",
+              "lockup_date": ""
+            }
+          ],
+          "crowdsale_addresses": [
+            {
+              "currency": "",
+              "address": ""
+            }
+          ]
+        },
+        "dates": {
+          "start_date": "2017-12-14T00:00:00",
+          "end_date": "2018-01-25T00:00:00",
+          "duration": ""
+        },
+        "raised_funds": [
+          {
+            "currency": "",
+            "amount": 0
+          }
+        ],
+        "prices": {
+          "token_final_price": [
+            {
+              "currency": "",
+              "price": 0
+            }
+          ],
+          "bonuses": [
+            {
+              "amount": "+20%",
+              "condition": "20-30 ETH"
+            },
+            {
+              "amount": "+30%",
+              "condition": "30-50 ETH"
+            },
+            {
+              "amount": "+40%",
+              "condition": "50-90 ETH"
+            },
+            {
+              "amount": "+50",
+              "condition": "> 90 ETH"
+            }
+          ]
+        },
+        "contract": [
+          {
+            "contract_address": "",
+            "contract_type": ""
+          }
+        ]
+      },
+      {
+        "phase_num": 1,
+        "phase_name": "ICO",
+        "phase_status": "Active",
+        "registration": {
+          "start_date": "",
+          "end_date": "",
+          "website": "",
+          "terms": ""
+        },
+        "terms": {
+          "sales_agreement": "https://adamant.im/ico/",
+          "sales_url": "https://adamant.im/ico/",
+          "issued_tokens": 73500000,
+          "sold_tokens": 0,
+          "share_of_sold": 0,
+          "token_distribution_date": "",
+          "cap_limit": [
+            {
+              "currency": "USD",
+              "amount": 30000000
+            }
+          ],
+          "vesting": [
+            {
+              "supply_percent": 0,
+              "lockup_condition": "",
+              "lockup_date": ""
+            }
+          ],
+          "crowdsale_addresses": [
+            {
+              "currency": "",
+              "address": ""
+            }
+          ]
+        },
+        "dates": {
+          "start_date": "2018-01-30T00:00:00",
+          "end_date": "2018-03-30T00:00:00",
+          "duration": ""
+        },
+        "raised_funds": [
+          {
+            "currency": "",
+            "amount": 0
+          }
+        ],
+        "prices": {
+          "token_final_price": [
+            {
+              "currency": "",
+              "price": 0
+            }
+          ],
+          "bonuses": [
+            {
+              "amount": "+20%",
+              "condition": "20-30 ETH"
+            },
+            {
+              "amount": "+30%",
+              "condition": "30-50 ETH"
+            },
+            {
+              "amount": "+40%",
+              "condition": "50-90 ETH"
+            },
+            {
+              "amount": "+50",
+              "condition": "> 90 ETH"
+            }
+          ]
+        },
+        "contract": [
+          {
+            "contract_address": "",
+            "contract_type": ""
+          }
+        ]
+      }
+    ]
+  },
+  "app": {
+    "info": [
+      {
+        "name": "ADAMANT messenger",
+        "same_blockchain": true,
+        "sources_availability": true,
+        "app_status": 3,
+        "app_type": "messenger",
+        "app_url": "https://msg.adamant.im/#/",
+        "milestone": [
+          {
+            "number": 0,
+            "name": "Developing ADAMANT conceptions, Consulting with industry experts, ADAMANT TestNet deployment",
+            "start_date": "2017 Q2",
+            "end_date": "2017 Q3",
+            "current_status": "Completed"
+          },
+          {
+            "number": 1,
+            "name": "Progressive Web App development (ADAMANT Wallet and Messenger), Making the Whitepaper",
+            "start_date": "2017 Q3",
+            "end_date": "2017 Q4",
+            "current_status": "Completed"
+          },
+          {
+            "number": 2,
+            "name": "Website development, Starting up the ADAMANT MainNet, Making a full node distribution package, Creating ADAMANT Blockchain Explorer, Setting up information resources (social networks, forums and blogs), Bounty Campaign launch, Pre-ICO launch (12/14/2017)",
+            "start_date": "2017 Q4",
+            "end_date": "2018 Q1",
+            "current_status": "Completed"
+          },
+          {
+            "number": 3,
+            "name": "Pre-ICO closure (01/14/2018), ICO launch (01/30/2018), Adding new languages and translations for information resources, Extending ADAMANT Messenger functionality (with user profiles, simpler login process and sending files / tokens right from the chat screen), ICO end up (03/30/2018",
+            "start_date": "2018 Q1",
+            "end_date": "2018 Q2",
+            "current_status": "In work"
+          },
+          {
+            "number": 4,
+            "name": "Listing ADM tokens on the cryptocurrency markets, Infrastructure whole-scaling, Extending ADAMANT Messenger functionality (adding address book, group chats, search through messages, ability for chatroom closure), Releasing ADAMANT Messenger native application for iOS",
+            "start_date": "2018 Q2",
+            "end_date": "2018 Q3",
+            "current_status": "Planned"
+          },
+          {
+            "number": 5,
+            "name": "Introducing ADAMANT Business Service (with blockchain storing for documents and their digital signing), Releasing ADAMANT Messenger native application for Android, Marketing campaigns",
+            "start_date": "2018 Q3",
+            "end_date": "2018 Q4",
+            "current_status": "Planned"
+          },
+          {
+            "number": 6,
+            "name": "Setting up ADAMANT Business Service for partner companies, Marketing campaigns, Security Audit",
+            "start_date": "2018 Q4",
+            "end_date": "2019",
+            "current_status": "Planned"
+          }
+        ]
+      }
+    ]
+  },
+  "links": [
+    {
+      "type": "website",
+      "name": "adamant.im",
+      "url": "https://adamant.im/",
+      "tags": [
+        "Main"
+      ]
+    },
+    {
+      "type": "paper",
+      "name": "ADAMANT Whitepaper",
+      "url": "https://adamant.im/whitepaper/adamant-whitepaper-en.pdf",
+      "tags": [
+        "Main",
+        "Science"
+      ]
+    },
+    {
+      "type": "github",
+      "name": "ADAMANT Github",
+      "url": "https://github.com/adamant-im",
+      "icon": "github.png",
+      "tags": [
+        "Main",
+        "Code"
+      ]
+    },
+    {
+      "type": "forum",
+      "name": "Bitcointalk",
+      "url": "https://bitcointalk.org/index.php?topic=2635646.0",
+      "icon": "bitcointalk.png",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "type": "twitter",
+      "name": "Twitter",
+      "url": "https://twitter.com/adamant_im",
+      "icon": "twitter.png",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "type": "custom",
+      "name": "ADAMANT Telegram",
+      "url": "https://t.me/adamant_im",
+      "icon": "telegram.png",
+      "tags": [
+        "News"
+      ]
+    },
+    {
+      "type": "custom",
+      "name": "Facebook",
+      "url": "https://www.facebook.com/adamant.im/",
+      "icon": "facebook.png",
+      "tags": [
+        "News"
+      ]
+    }
+  ],
+  "token": [
+    {
+      "name": "adm token",
+      "symbol": "ADM",
+      "token_purpose": "app",
+      "token_type": "core token",
+      "inflation_rate": "",
+      "circulation_terms": "",
+      "governance_rights_project": "",
+      "governance_rights_org": ""
+    }
+  ],
+  "exchange": [
+    {
+      "exchange": "",
+      "date": "",
+      "price": "",
+      "volume": ""
+    }
+  ],
+  "label": [
+    {
+      "blockchain": "",
+      "address": "",
+      "balance": ""
+    }
+  ]
+}

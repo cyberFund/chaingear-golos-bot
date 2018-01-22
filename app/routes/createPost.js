@@ -33,7 +33,10 @@ module.exports = (app, db) => {
   app.post('/createPost', (req, res) => {
     const post = postGen(req.body.form)
     writeOrUpdate(repo, br, `post${i}`, `posts/post${i}.md`, post)
-      .then(result=>console.log(result))
+      .then(result=>{
+        console.log(result)
+        res.send('Success!')
+      })
       .catch(error=>console.log(error))
   })
 }
