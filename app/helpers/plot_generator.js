@@ -17,8 +17,8 @@ module.exports = (dataset, filename, palleteNum) => {
   const canvas = d3n.createCanvas(500, 250)
   // DBE8D9 FDF7DB
   const context = canvas.getContext('2d')
-  context.fillStyle = "#DBE8D9";
-  context.fillRect(0, 0, canvas.width, canvas.height);
+  // context.fillStyle = "#DBE8D9";
+  // context.fillRect(0, 0, canvas.width, canvas.height);
   const pie = d3.pie()
     .value(d => d.percent)
     .sort(null)

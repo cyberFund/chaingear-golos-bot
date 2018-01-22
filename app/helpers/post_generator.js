@@ -1,112 +1,12 @@
 const fs = require('fs')
 const dateFormat = require('dateformat')
 const plotGen = require('./plot_generator.js')
-const form = {
-  blockchain: {
-    project_name: 'Dether'
-  },
-  short_description: {
-    text: 'Some description'
-  },
-  token: {
-    name: 'Token',
-    symbol: 'TOK',
-    token_purpose: 'ICO token',
-    inflation_rate: '10% annual decrease'
-  },
-  ico: {
-    ico_start_date_date: '2018-01-25T00:00:00',
-    ico_end_date_date: '2018-02-30T00:00:00',
-    reg_start_date_date: '2018-01-15T00:00:00',
-    reg_end_date_date: '2018-01-24T00:00:00',
-    reg_url: 'https://ico.coolblockchain.io/reg',
-    sales_url: 'https://ico.coolblockchain.io',
-    sales_agreement: 'https://ico.coolblockchain.io/terms',
-    issued_tokens: 150000000,
-    cap_limit_currency: 'USD',
-    cap_limit_amount: 10000000
-  },
-  funds: {
-    distr: [
-      {description: 'bounty', percent: 25},
-      {description: 'ico', percent: 30}
-    ],
-    proceeds: [
-      {description: 'development', percent: 40},
-      {description: 'marketing', percent: 50}
-    ]
-  },
-  links: [
-    {
-                "type": "website",
-                "name": "adamant.im",
-                "url": "https://adamant.im/",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "ADAMANT Whitepaper",
-                "url": "https://adamant.im/whitepaper/adamant-whitepaper-en.pdf",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "ADAMANT Github",
-                "url": "https://github.com/adamant-im",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "Bitcointalk",
-                "url": "https://bitcointalk.org/index.php?topic=2635646.0",
-                "icon": "bitcointalk.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/adamant_im",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "ADAMANT Telegram",
-                "url": "https://t.me/adamant_im",
-                "icon": "telegram.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Facebook",
-                "url": "https://www.facebook.com/adamant.im/",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ]
-            }
-  ]
-}
+
 const createPost = (form) => {
-  plotGen(form.funds.proceeds, `./files/${form.blockchain.project_name}/funds_distr.png`, 3)
-  plotGen(form.funds.distr, `./files/${form.blockchain.project_name}/token_distr.png`, 2)
+  plotGen(form.funds.proceeds, `./files/${form.blockchain.project_name}/funds_distr.png`, 2)
+  plotGen(form.funds.distr, `./files/${form.blockchain.project_name}/token_distr.png`, 1)
   // String for short description
-  const descrStr = `## Краткое описание:
+  const descrStr = `Автор поста: ${form.username}\n## Краткое описание:
   ${form.short_description.text}`
 
   // String for token description
@@ -143,7 +43,7 @@ const createPost = (form) => {
   const regSiteStr = (form.ico.reg_url!==undefined)?
     `\nСтраница регистрации: ${form.ico.reg_url}\n`:''
   const issuedStr = (form.ico.issued_tokens!==undefined)?
-    `\nКоличество токенов, выставленных на продажу: ${form.ico.issued_tokens} ${form.token.symbol}\n`:''
+    `\n\nКоличество токенов, выставленных на продажу: ${form.ico.issued_tokens} ${form.token.symbol}\n`:''
   const tokenDistrDate = (form.ico.token_distr_date!==undefined)?
     `\nДата распределения токенов: ${dateFormat(form.ico.token_distr_date, 'fullDate')}\n`:''
   const capStr = (form.ico.cap_limit_amount!==undefined)?
@@ -179,7 +79,7 @@ const createPost = (form) => {
   const linksList = form.links.reduce((str, curr) => str += `\n* [${curr.name}](${curr.url})`, '')
   const linksStr = `\n## Полезные ссылки\n${linksList}`
   // Full post string
-  const fullPost = `${descrStr}${tokenStr}${icoStr}${linksStr}`
+  const fullPost = `${descrStr}${tokenStr}${icoStr}${linksStr}\n\nЭтот пост создан участником [краудсорс-программы](https://golos.io/cyberanalytics/@cyberanalytics/link-to-post-with-programm-description), запущенной сообществом @cyberanalytics. Все выплаты за пост будут переведены в кошелек участника`
   return fullPost
   //fs.writeFileSync('./test.md', fullPost)
 }
