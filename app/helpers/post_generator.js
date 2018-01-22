@@ -3,8 +3,10 @@ const dateFormat = require('dateformat')
 const plotGen = require('./plot_generator.js')
 
 const createPost = (form) => {
-  plotGen(form.funds.proceeds, `./files/${form.blockchain.project_name}/funds_distr.png`, 2)
-  plotGen(form.funds.distr, `./files/${form.blockchain.project_name}/token_distr.png`, 1)
+  fs.mkdir(`./files/${form.blockchain.project_name}`, (err) => {
+    plotGen(form.funds.proceeds, `./files/${form.blockchain.project_name}/funds_distr.png`, 2)
+    plotGen(form.funds.distr, `./files/${form.blockchain.project_name}/token_distr.png`, 1)
+  })
   // String for short description
   const descrStr = `Автор поста: ${form.username}\n## Краткое описание:
   ${form.short_description.text}`
@@ -43,7 +45,7 @@ const createPost = (form) => {
   const regSiteStr = (form.ico.reg_url!==undefined)?
     `\nСтраница регистрации: ${form.ico.reg_url}\n`:''
   const issuedStr = (form.ico.issued_tokens!==undefined)?
-    `\n\nКоличество токенов, выставленных на продажу: ${form.ico.issued_tokens} ${form.token.symbol}\n`:''
+    `\nz\nКоличество токенов, выставленных на продажу: ${form.ico.issued_tokens} ${form.token.symbol}\n`:''
   const tokenDistrDate = (form.ico.token_distr_date!==undefined)?
     `\nДата распределения токенов: ${dateFormat(form.ico.token_distr_date, 'fullDate')}\n`:''
   const capStr = (form.ico.cap_limit_amount!==undefined)?
